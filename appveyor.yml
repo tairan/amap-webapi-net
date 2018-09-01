@@ -1,8 +1,20 @@
 version: 0.0.{build}
-image:
-- Visual Studio 2017
-- Ubuntu1804
+skip_tags: true
+image: Visual Studio 2017
+configuration: Debug,Release
+platform: Any CPU
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
 nuget:
   project_feed: true
 build:
+  publish_nuget: true
+  publish_nuget_symbols: true
+  include_nuget_references: true
   verbosity: minimal
