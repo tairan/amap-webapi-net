@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amap.WebApi", "src\Amap.WebApi\Amap.WebApi.csproj", "{739C3FFA-9333-4002-A84D-45EFBB076B47}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{04CBF8DA-3E0E-4362-A58B-3FFE0202163B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E89860CF-C502-47E8-805D-9FA6A638D4C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amap.WebApi.Tests", "test\Amap.WebApi.Tests\Amap.WebApi.Tests.csproj", "{F1C02CB4-DF76-4F3F-BDF7-85EAE09D82DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +21,17 @@ Global
 		{739C3FFA-9333-4002-A84D-45EFBB076B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{739C3FFA-9333-4002-A84D-45EFBB076B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{739C3FFA-9333-4002-A84D-45EFBB076B47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1C02CB4-DF76-4F3F-BDF7-85EAE09D82DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1C02CB4-DF76-4F3F-BDF7-85EAE09D82DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1C02CB4-DF76-4F3F-BDF7-85EAE09D82DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1C02CB4-DF76-4F3F-BDF7-85EAE09D82DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{739C3FFA-9333-4002-A84D-45EFBB076B47} = {E89860CF-C502-47E8-805D-9FA6A638D4C9}
+		{F1C02CB4-DF76-4F3F-BDF7-85EAE09D82DC} = {04CBF8DA-3E0E-4362-A58B-3FFE0202163B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D05C31B-2702-4638-9F36-A7199CE32D92}
