@@ -12,11 +12,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F719FA17-7B59-4F8C-B917-685C1130FBF1}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		appveyor.yml = appveyor.yml
 		Directory.build.props = Directory.build.props
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amap.WebApi.Web", "test\Amap.WebApi.Web\Amap.WebApi.Web.csproj", "{6FBF76B6-F455-4151-85AF-D3992B54EB1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amap.WebApi.Web", "test\Amap.WebApi.Web\Amap.WebApi.Web.csproj", "{6FBF76B6-F455-4151-85AF-D3992B54EB1F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amap.WebApi.Shared", "src\Amap.WebApi.Shared\Amap.WebApi.Shared.csproj", "{C36E0726-9CAA-4B16-97D1-798F00E8920F}"
 EndProject
