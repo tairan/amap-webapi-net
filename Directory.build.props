@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <Version>0.2.0</Version>
+    <PackageProjectUrl>https://github.com/tairan/amap-webapi-net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/tairan/amap-webapi-net</RepositoryUrl>
+    <PackageTags>Amap .NET SDK</PackageTags>
+    <Authors>Tairan Wang</Authors>
+  </PropertyGroup>
+</Project>
