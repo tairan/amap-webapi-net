@@ -1,6 +1,6 @@
-version: 0.0.{build}
+version: 0.2.{build}
 skip_tags: true
-image: .NET Core 2.2 runtime version 2.2.1
+image: .NET Core SDK 2.2.103
 configuration:
 - Release
 - Debug
