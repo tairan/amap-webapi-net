@@ -9,17 +9,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{04CBF8DA-3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E89860CF-C502-47E8-805D-9FA6A638D4C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amap.WebApi.Tests", "test\Amap.WebApi.Tests\Amap.WebApi.Tests.csproj", "{F1C02CB4-DF76-4F3F-BDF7-85EAE09D82DC}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F719FA17-7B59-4F8C-B917-685C1130FBF1}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		Directory.build.props = Directory.build.props
+		global.json = global.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amap.WebApi.Web", "test\Amap.WebApi.Web\Amap.WebApi.Web.csproj", "{6FBF76B6-F455-4151-85AF-D3992B54EB1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amap.WebApi.Shared", "src\Amap.WebApi.Shared\Amap.WebApi.Shared.csproj", "{C36E0726-9CAA-4B16-97D1-798F00E8920F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Amap.WebApi.Shared", "src\Amap.WebApi.Shared\Amap.WebApi.Shared.csproj", "{C36E0726-9CAA-4B16-97D1-798F00E8920F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +30,6 @@ Global
 		{739C3FFA-9333-4002-A84D-45EFBB076B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{739C3FFA-9333-4002-A84D-45EFBB076B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{739C3FFA-9333-4002-A84D-45EFBB076B47}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F1C02CB4-DF76-4F3F-BDF7-85EAE09D82DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1C02CB4-DF76-4F3F-BDF7-85EAE09D82DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1C02CB4-DF76-4F3F-BDF7-85EAE09D82DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1C02CB4-DF76-4F3F-BDF7-85EAE09D82DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6FBF76B6-F455-4151-85AF-D3992B54EB1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6FBF76B6-F455-4151-85AF-D3992B54EB1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FBF76B6-F455-4151-85AF-D3992B54EB1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,7 +44,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{739C3FFA-9333-4002-A84D-45EFBB076B47} = {E89860CF-C502-47E8-805D-9FA6A638D4C9}
-		{F1C02CB4-DF76-4F3F-BDF7-85EAE09D82DC} = {04CBF8DA-3E0E-4362-A58B-3FFE0202163B}
 		{6FBF76B6-F455-4151-85AF-D3992B54EB1F} = {04CBF8DA-3E0E-4362-A58B-3FFE0202163B}
 		{C36E0726-9CAA-4B16-97D1-798F00E8920F} = {E89860CF-C502-47E8-805D-9FA6A638D4C9}
 	EndGlobalSection
