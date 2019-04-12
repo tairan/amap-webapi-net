@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 
 namespace Amap.WebApi
@@ -17,6 +18,7 @@ namespace Amap.WebApi
             IHttpClientFactory httpClientFactory)
             : base(options, httpClientFactory)
         {
+            _logger = NullLogger.Instance;
         }
 
         public GeoService(
@@ -30,7 +32,6 @@ namespace Amap.WebApi
 
         public async Task<string> GetGeoAsync(string address, string city = "", bool batch = false)
         {
-
             var dict = new Dictionary<string, object>
             {
                 { "address", address },
@@ -42,12 +43,7 @@ namespace Amap.WebApi
                 dict.Add("city", city);
             }
 
-            var query = dict.Concat(_defaultQueries)
-                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToString().ToLower());
-
-            query.Add("sig", await SignAsync(query));
-
-            return await GetAsync(QueryHelpers.AddQueryString("/v3/geocode/geo", query));
+            return await SignAndGetAsync("/v3/geocode/geo", dict);
         }
 
         public async Task<string> GetRegeoAsync(string location, string poitype, bool batch = false, int radius = 1000, string extensions = "base", int roadlevel = 0, int homeorcorp = 0)
@@ -71,12 +67,7 @@ namespace Amap.WebApi
                 }
             }
 
-            var query = dict.Concat(_defaultQueries)
-                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToString().ToLower());
-
-            query.Add("sig", await SignAsync(query));
-
-            return await GetAsync(QueryHelpers.AddQueryString("/v3/geocode/regeo", query));
+            return await SignAndGetAsync("/v3/geocode/regeo", dict);
         }
     }
 }

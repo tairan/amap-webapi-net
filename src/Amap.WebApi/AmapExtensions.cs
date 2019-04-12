@@ -16,6 +16,7 @@ namespace Amap.WebApi
             services.AddOptions<AmapOptions>();
 
             services.AddTransient<IGeoService, GeoService>();
+            services.AddTransient<IDirectionService, DirectionService>();
 
             return services;
         }
