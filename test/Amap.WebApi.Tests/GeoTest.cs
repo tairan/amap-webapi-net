@@ -1,17 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Net.Http;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Amap.WebApi.Shared;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using NSubstitute;
 using Xunit;
 
 namespace Amap.WebApi.Tests

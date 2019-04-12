@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace Amap.WebApi.Shared
 {
