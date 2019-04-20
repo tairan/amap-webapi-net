@@ -12,6 +12,7 @@ namespace Amap.WebApi
 
             services.AddTransient<IGeoService, GeoService>();
             services.AddTransient<IDirectionService, DirectionService>();
+            services.AddTransient<IPoiService, PoiService>();
 
             return services;
         }
