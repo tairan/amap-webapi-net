@@ -9,6 +9,9 @@ branches:
   - /^(.*\/)?ci-.*$/
 init:
 - git config --global core.autocrlf true
+platform: Any CPU
+configuration: Release
+before_build: nuget restore Amap.WebApi.sln
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
