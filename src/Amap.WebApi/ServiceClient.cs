@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
 
 namespace Amap.WebApi
@@ -74,6 +75,16 @@ namespace Amap.WebApi
                 var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(plain));
                 return await Task.FromResult(string.Join("", hash.Select(b => b.ToString("x2"))));
             }
+        }
+
+        protected async Task<string> SignAndGetAsync(string path, IDictionary<string , object> query)
+        {
+            var data = query.Concat(_defaultQueries)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToString().ToLower());
+
+            data.Add("sig", await SignAsync(data));
+
+            return await GetAsync(QueryHelpers.AddQueryString(path, data));
         }
     }
 }

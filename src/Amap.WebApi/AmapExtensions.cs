@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Amap.WebApi
 {
@@ -16,6 +11,9 @@ namespace Amap.WebApi
             services.AddOptions<AmapOptions>();
 
             services.AddTransient<IGeoService, GeoService>();
+            services.AddTransient<IDirectionService, DirectionService>();
+            services.AddTransient<IPoiService, PoiService>();
+            services.AddTransient<IIpService, IpService>();
 
             return services;
         }

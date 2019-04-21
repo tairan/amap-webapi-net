@@ -1,10 +1,17 @@
 version: 0.2.{build}
 skip_tags: true
 image: Visual Studio 2017
-configuration:
-- Release
-- Debug
+branches:
+  only:
+  - master
+  - develop
+  - /^release\/.*$/
+  - /^(.*\/)?ci-.*$/
+init:
+- git config --global core.autocrlf true
 platform: Any CPU
+configuration: Release
+before_build: nuget restore Amap.WebApi.sln
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
@@ -13,10 +20,5 @@ dotnet_csproj:
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
-nuget:
-  project_feed: true
-build:
-  publish_nuget: true
-  publish_nuget_symbols: true
-  include_nuget_references: true
-  verbosity: minimal
+test: 'off'
+deploy: 'off'
