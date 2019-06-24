@@ -12,6 +12,28 @@
 
 请访问[高德官方网站](https://lbs.amap.com/api/webservice/summary)了解相关`WebAPI`的作用。
 
+## Getting Started
+
+```c#
+public class Startup
+{
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+    
+     public void ConfigureServices(IServiceCollection services)
+     {
+            services.AddAmap(options =>
+            {
+                options.Key = Configuration.GetSection("Amap:Key");
+            }) ;
+     }
+}
+```
+
 
 
 ## Contributions
