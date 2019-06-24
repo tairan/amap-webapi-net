@@ -10,23 +10,12 @@ namespace Amap.WebApi
 {
     public class DirectionService : ServiceClient, IDirectionService
     {
-        private readonly ILogger _logger;
-
         public DirectionService(
-            IOptionsSnapshot<AmapOptions> options,
-            IHttpClientFactory httpClientFactory)
-            : base(options, httpClientFactory)
+       IOptionsSnapshot<AmapOptions> options,
+       HttpClient httpClient)
+       : base(options, httpClient)
         {
-            _logger = NullLogger.Instance;
-        }
 
-        public DirectionService(
-            IOptionsSnapshot<AmapOptions> options,
-            IHttpClientFactory httpClientFactory,
-            ILoggerFactory loggerFactory)
-            : this(options, httpClientFactory)
-        {
-            _logger = loggerFactory.CreateLogger<DirectionService>();
         }
 
         public async Task<string> GetWalkingAsync(string origin, string destination)

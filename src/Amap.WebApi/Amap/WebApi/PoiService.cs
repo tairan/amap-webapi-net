@@ -11,14 +11,11 @@ namespace Amap.WebApi
 {
     public class PoiService : ServiceClient, IPoiService
     {
-        private readonly ILogger _logger;
-
         public PoiService(
             IOptionsSnapshot<AmapOptions> options,
-            IHttpClientFactory httpClientFactory)
-            : base(options, httpClientFactory)
+            HttpClient httpClient)
+            : base(options, httpClient)
         {
-            _logger = NullLogger.Instance;
         }
 
         public async Task<string> GetPoiByAroundAsync(string location)

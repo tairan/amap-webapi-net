@@ -9,8 +9,10 @@ namespace Amap.WebApi
 {
     public class IpService : ServiceClient, IIpService
     {
-        public IpService(IOptionsSnapshot<AmapOptions> options, IHttpClientFactory httpClientFactory)
-            : base(options, httpClientFactory)
+        public IpService(
+            IOptionsSnapshot<AmapOptions> options,
+            HttpClient httpClient)
+            : base(options, httpClient)
         {
         }
 

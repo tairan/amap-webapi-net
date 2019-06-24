@@ -15,10 +15,10 @@ namespace Amap.WebApi.Tests
 
         public ServiceProvider ServiceProvider =>
             new ServiceCollection()
-            .Configure<AmapOptions>(options => options.Key = Key)
-            .AddHttpClient()
-            .AddLogging()
-            .AddAmapServices()
+            .AddAmap(options =>
+            {
+                options.Key = Key;
+            })
             .BuildServiceProvider();
 
         public IConfiguration Configuration =>
@@ -28,12 +28,6 @@ namespace Amap.WebApi.Tests
 
         public string Key =>
             Configuration.GetSection("amap:key").Value;
-
-        public ILoggerFactory LoggerFactory =>
-            ServiceProvider.GetRequiredService<ILoggerFactory>();
-
-        public IHttpClientFactory HttpClientFactory =>
-            ServiceProvider.GetRequiredService<IHttpClientFactory>();
 
         public IOptionsSnapshot<AmapOptions> AmapOptions =>
             ServiceProvider.GetRequiredService<IOptionsSnapshot<AmapOptions>>();

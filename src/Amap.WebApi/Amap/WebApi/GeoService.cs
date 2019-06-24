@@ -9,23 +9,11 @@ namespace Amap.WebApi
 {
     public class GeoService : ServiceClient, IGeoService
     {
-        private readonly ILogger _logger;
-
         public GeoService(
             IOptionsSnapshot<AmapOptions> options,
-            IHttpClientFactory httpClientFactory)
-            : base(options, httpClientFactory)
+            HttpClient httpClient)
+            : base(options, httpClient)
         {
-            _logger = NullLogger.Instance;
-        }
-
-        public GeoService(
-            IOptionsSnapshot<AmapOptions> options,
-            IHttpClientFactory httpClientFactory,
-            ILoggerFactory loggerFactory)
-            : this(options, httpClientFactory)
-        {
-            _logger = loggerFactory.CreateLogger<GeoService>();
         }
 
         public async Task<string> GetGeoAsync(string address, string city = "", bool batch = false)

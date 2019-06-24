@@ -10,34 +10,29 @@ using Microsoft.Extensions.Options;
 
 namespace Amap.WebApi
 {
-    public abstract class ServiceClient
+    public abstract class ServiceClient : IServiceClient
     {
-        private const string _name = "AMAP_HTTPCLIENT";
-        protected readonly HttpClient _client;
-        protected readonly AmapOptions _options;
         protected readonly Dictionary<string, object> _defaultQueries;
 
         public ServiceClient(
             IOptionsSnapshot<AmapOptions> options,
-            IHttpClientFactory httpClientFactory)
+            HttpClient httpClient)
         {
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
+            Options = options.Value;
 
-            _options = options.Value;
-
-            _client = httpClientFactory.CreateClient(_name);
-
-            _client.BaseAddress = new Uri(options.Value.Host);
+            HttpClient = httpClient;
+            HttpClient.BaseAddress = new Uri(Options.Host);
 
             _defaultQueries = new Dictionary<string, object>
             {
-                { "key", options.Value.Key },
+                { "key", Options.Key },
                 { "output", "json" }
             };
         }
+
+        public HttpClient HttpClient { get; }
+
+        public AmapOptions Options { get; }
 
         protected async Task<string> GetAsync(string uri)
         {
@@ -46,7 +41,10 @@ namespace Amap.WebApi
                 throw new ArgumentNullException(nameof(uri));
             }
 
-            return await _client.GetStringAsync(uri);
+            var response = await HttpClient.GetAsync(uri);
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadAsStringAsync();
         }
 
         protected async Task<string> PostAsync(string uri, HttpContent content)
@@ -61,7 +59,7 @@ namespace Amap.WebApi
                 throw new ArgumentNullException(nameof(content));
             }
 
-            var response = await _client.PostAsync(uri, content);
+            var response = await HttpClient.PostAsync(uri, content);
             response.EnsureSuccessStatusCode();
 
             return await response.Content.ReadAsStringAsync();
@@ -71,13 +69,13 @@ namespace Amap.WebApi
         {
             using (var md5 = MD5.Create())
             {
-                var plain = string.Join("&", dict.OrderBy(kvp => kvp.Key).Select(kvp => $"{kvp.Key}={kvp.Value}")) + _options.Key;
+                var plain = string.Join("&", dict.OrderBy(kvp => kvp.Key).Select(kvp => $"{kvp.Key}={kvp.Value}")) + Options.Key;
                 var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(plain));
                 return await Task.FromResult(string.Join("", hash.Select(b => b.ToString("x2"))));
             }
         }
 
-        protected async Task<string> SignAndGetAsync(string path, IDictionary<string , object> query)
+        protected async Task<string> SignAndGetAsync(string path, IDictionary<string, object> query)
         {
             var data = query.Concat(_defaultQueries)
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToString().ToLower());
